@@ -37,8 +37,8 @@ def space():
 def neu_calendar():
     html_content = """
     <div style="margin-left: 260px;">
-    <iframe src="https://calendar.google.com/calendar/embed?src=fed541c40f5d89f372ed5bf629b6e4041144e74b462bf3d3b12157f789e053cb%40group.calendar.google.com&ctz=Asia%2FHo_Chi_Minh&mode=week" style="border: 0" width="500" height="500" frameborder="0" scrolling="yes"></iframe>
+    <iframe src="https://calendar.google.com/calendar/embed?src=fed541c40f5d89f372ed5bf629b6e4041144e74b462bf3d3b12157f789e053cb%40group.calendar.google.com&ctz=Asia%2FHo_Chi_Minh&mode=week" style="border: 0" width="500" height="400" frameborder="0" scrolling="yes"></iframe>
     </div>
     """
     header("Timetable")
-    components.html(html_content, height = 500, width = 1000)
+    components.html(html_content, height = 400, width = 1000)

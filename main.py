@@ -12,20 +12,6 @@ st.set_page_config(
 load_css()
 sidebar()
 
-st.markdown(
-    """
-    <style>
-        html, body {
-            overflow: hidden;
-        }
-        .main {
-            overflow: hidden;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 
 def main():
     heading = "Ly Thanh Long"
@@ -40,7 +26,7 @@ def main():
         space()
         neu_calendar()
     with col2:
-        write("Headinc")
+        header("Meomeo")
 
 
 
