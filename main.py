@@ -12,6 +12,19 @@ st.set_page_config(
 load_css()
 sidebar()
 
+st.markdown(
+    """
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+        .main {
+            overflow: hidden;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 
 def main():
