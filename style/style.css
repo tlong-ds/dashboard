@@ -1,0 +1,87 @@
+/* Default
+/* Hide default sidebar navigation */
+[data-testid="stSidebarNav"] {display: none !important;}
+            
+/* Hide default sidebar content */
+.css-1d391kg {display: none}
+section[data-testid="stSidebar"] .css-1d391kg {display: none}
+
+/* Hide collapse control */
+[data-testid="collapsedControl"] {display: none}
+
+/* Additional selectors to ensure navigation is hidden */
+.css-1544g2n.e1fqkh3o4 {display: none !important;}
+.css-1adrfps.e1fqkh3o4 {display: none !important;}
+
+/* Change the width of the sidebar */
+[data-testid="stSidebar"] {
+    width: 10px !important; /* Adjust this value to your desired width */
+}
+[data-testid="stSidebar"] .css-ng1t4o { 
+    width: 10px !important; /* Match the width value here */
+}
+/* Adjust the main content margin to align with the sidebar */
+.main {
+    margin-left: 20px !important; /* Slightly larger than the sidebar width for spacing */
+}
+
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+
+
+
+
+
+
+/* Custom Sidebar */
+.custom-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    background-color: rgba(248, 249, 250, 0.12); /* Added transparency */
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.custom-sidebar .logo {
+    font-size: 20px;
+    margin-bottom: 100px;
+}
+.custom-sidebar .menu-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 100px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0); 
+    
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-sidebar .menu-item:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-sidebar .menu-item a {
+    color: white;
+    text-decoration: none; /* Optional: removes the underline from links */
+}
+
+
+
+
+
+
+
+/* Hide submit button (use border only) */
+button[aria-label="Submit"], div[data-testid="stFormSubmitButton"] {
+    display: none;
+}

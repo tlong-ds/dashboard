@@ -1,0 +1,16 @@
+[theme]
+base = "dark"
+
+[client]
+showErrorDetails = "none"
+
+[global]
+showWarningOnDirectExecution = false
+
+[runner]
+magicEnabled = true
+fastReruns = true
+
+[server]
+runOnSave = true
+enableStaticServing = true
