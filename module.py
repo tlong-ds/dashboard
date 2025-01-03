@@ -26,6 +26,9 @@ def title(text: str):
 def header(text: str):
     st.markdown(f'<div style="margin-left: 260px;"><h2>{text}</h2></div>', unsafe_allow_html=True)
 
+def subheader(text: str):
+    st.markdown(f'<div style="margin-left: 260px;"><h3>{text}</h3></div>', unsafe_allow_html=True)
+
 def write(text: str):
     st.markdown(f'<div style="margin-left: 260px;">{text}</div>', unsafe_allow_html=True)
 
@@ -33,7 +36,8 @@ def space():
     st.markdown("")
     st.markdown("")
     st.markdown("")
-
+    
+@st.cache_data
 def neu_calendar():
     html_content = """
     <div style="margin-left: 260px;">

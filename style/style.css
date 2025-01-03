@@ -81,7 +81,40 @@ header {visibility: hidden;}
 
 
 
-/* Hide submit button (use border only) */
-button[aria-label="Submit"], div[data-testid="stFormSubmitButton"] {
-    display: none;
+
+/* Custom style for Streamlit buttons */
+button, .stButton button {
+    background-color: #007bff; /* Primary blue color */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    margin-left: 260px;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+button:hover, .stButton button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Custom style for Streamlit checkboxes */
+.stCheckbox {
+    margin-left: 260px; /* Align with buttons */
+    display: flex;
+    align-items: center;
+}
+
+.stCheckbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.stCheckbox label {
+    font-size: 16px;
+    color: #333; /* Text color */
+    cursor: pointer;
 }

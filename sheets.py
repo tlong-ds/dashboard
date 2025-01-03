@@ -1,10 +1,10 @@
 import streamlit as st
-from datetime import date
 import gspread
-from googleapiclient.discovery import build  # Example Google Sheets integration
+import pandas as pd
+from googleapiclient.discovery import build
 from google.oauth2.service_account import Credentials
+from datetime import date
 
-# Initialize Google Sheets client (replace with your credentials and sheet setup)
 def init_sheets_client():
     SERVICE_ACCOUNT_FILE = "fabled-pivot-446609-e4-d1fb55e9792a.json"
     SCOPES_SHEETS = [
@@ -16,6 +16,20 @@ def init_sheets_client():
     )
     sheets_client = gspread.authorize(credentials_sheets) 
     return sheets_client
+
+
+
+def read_google_sheet():
+    try:
+        sheets_client = init_sheets_client()
+        sheet = sheets_client.open("2025 Task Management").sheet1 
+        data = sheet.get_all_records()  
+        df = pd.DataFrame(data) 
+        return df
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+
 
 # Function to append data to Google Sheets
 def append_to_google_sheet(task, due_date):
@@ -32,25 +46,22 @@ def append_to_google_sheet(task, due_date):
 
 # Task creation function
 def create():
-    try:
-        task = st.session_state.get("task_input", "").strip()
-        due_date = st.session_state.get("due_input", None)
+    task = st.session_state.get("task_input", "").strip()
+    due_date = st.session_state.get("due_input", None)
 
-        if not task:
-            st.error("Task input is empty! Please provide a valid task.")
-            return
+    if not task:
+        st.error("Task input is empty! Please provide a valid task.")
+        return
 
-        if not due_date:
-            st.error("Due date input is invalid!")
-            return
+    if not due_date:
+        st.error("Due date input is invalid!")
+        return
 
-        # Append task to Google Sheets
-        if append_to_google_sheet(task, due_date):
-            st.success("Task created successfully!")
-        else:
-            st.error("Failed to add the task to Google Sheets.")
-    except Exception as e:
-        st.error(f"Unable to create a new task! Error: {e}")
+    # Append task to Google Sheets
+    if append_to_google_sheet(task, due_date):
+        st.success("Task created successfully!")
+    else:
+        st.error("Failed to add the task to Google Sheets.")
 
 # Task creation form
 def create_task():
@@ -70,3 +81,22 @@ def create_task():
             key="due_input"
         )
         st.form_submit_button("Submit", on_click=create)
+
+    
+def update_task(task, check):
+    try:
+        sheets_client = init_sheets_client()
+        sheet = sheets_client.open("2025 Task Management").sheet1 
+        cell = sheet.find(task)
+        if cell:
+            row = cell.row
+            sheet.update_cell(row, 1, check)
+            return True
+        else:
+            return False
+    except Exception as e:
+        st.error(f"Google Sheets Error: {e}")
+        return False
+
+
+

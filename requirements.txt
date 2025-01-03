@@ -4,3 +4,5 @@ numpy
 streamlit_lottie
 st_pages
 streamlit.extras
+gspread
+google-api-python-client
